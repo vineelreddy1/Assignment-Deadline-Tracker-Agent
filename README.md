@@ -1,6 +1,6 @@
 # 📚 Day 2: Assignment Deadline Tracker Agent
 
-An AI Agent built for students to track upcoming assignment deadlines, determine urgency levels, prioritize workload, generate **1-click Google Calendar sync links**, and maintain session memory across multi-turn conversations.
+An AI Agent built for students to track upcoming assignment deadlines, determine urgency levels, prioritize workload, generate **1-click Google Calendar sync links**, and maintain session memory across multi-turn conversations with both a CLI and a visual **Gradio Web UI**.
 
 ---
 
@@ -165,8 +165,9 @@ You should complete **DBMS Assignment** first!
 ## 8. Installation
 
 ```bash
-# Clone or navigate to project directory
-cd assignment-deadline-agent
+# Clone the repository
+git clone https://github.com/vineelreddy1/Assignment-Deadline-Tracker-Agent.git
+cd Assignment-Deadline-Tracker-Agent
 
 # Create virtual environment (optional but recommended)
 python -m venv venv
@@ -178,8 +179,16 @@ pip install -r requirements.txt
 
 ---
 
-## 9. Running the CLI Application
+## 9. Running the Application
 
+### 🌐 Web UI Interface (Gradio)
+Launch the visual web interface with real-time Plan-Act execution trace logger and interactive priority matrix:
+```bash
+python app.py
+```
+> Open browser at: **`http://127.0.0.1:7860`**
+
+### 💻 Command Line Interface (CLI)
 ```bash
 python main.py
 ```
@@ -188,7 +197,7 @@ python main.py
 
 ## 10. Running the Tests & Notebook
 
-Run unit and integration test suite:
+Run unit and integration test suite (14 tests):
 ```bash
 pytest tests/ -v
 ```
