@@ -33,11 +33,13 @@ def process_agent_chat(user_message, chat_history):
     final_ans = res["final_answer"]
     trace_log = res["trace_log"]
 
-    # Append to Gradio chat history tuple list
+    # Format for Gradio 6.x messages schema: list of dicts with 'role' and 'content'
     if chat_history is None:
         chat_history = []
     
-    chat_history.append((user_msg, final_ans))
+    chat_history.append({"role": "user", "content": user_msg})
+    chat_history.append({"role": "assistant", "content": final_ans})
+
     memory_table = get_memory_table()
 
     return "", chat_history, trace_log, memory_table
