@@ -26,7 +26,7 @@ class TraceLogger:
         if self.verbose:
             try:
                 print(formatted)
-            except UnicodeEncodeError:
+            except Exception:
                 safe_str = formatted.encode("ascii", errors="replace").decode("ascii")
                 print(safe_str)
 
