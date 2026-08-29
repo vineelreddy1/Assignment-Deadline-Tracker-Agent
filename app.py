@@ -218,5 +218,7 @@ with gr.Blocks(title="Assignment Deadline Tracker Agent") as demo:
 
 
 if __name__ == "__main__":
-    print("Launching Assignment Deadline Tracker Agent Web UI on http://127.0.0.1:7860...")
-    demo.launch(server_name="127.0.0.1", server_port=7860, share=False)
+    import os
+    port = int(os.getenv("GRADIO_SERVER_PORT", 7860))
+    print(f"Launching Assignment Deadline Tracker Agent Web UI...")
+    demo.launch(server_name="127.0.0.1", server_port=port, share=False, inbrowser=True)
