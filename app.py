@@ -136,8 +136,7 @@ with gr.Blocks(title="Assignment Deadline Tracker Agent") as demo:
             with gr.Row():
                 with gr.Column(scale=3):
                     chatbot = gr.Chatbot(
-                        height=420,
-                        show_copy_button=True
+                        height=420
                     )
                     
                     with gr.Row():
@@ -169,7 +168,7 @@ with gr.Blocks(title="Assignment Deadline Tracker Agent") as demo:
                         elem_classes=["trace-box"]
                     )
 
-        # TAB 2: Live Memory & Priority Table
+        # TAB 2: Live Memory & Priority Matrix
         with gr.Tab("📋 Active Assignments & Priority Matrix"):
             gr.Markdown("### 📊 Stored Assignments Sorted by Urgency")
             memory_table_output = gr.Markdown(get_memory_table)
