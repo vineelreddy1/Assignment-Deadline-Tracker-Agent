@@ -1,5 +1,5 @@
 """
-Web UI Application for Assignment Deadline Tracker Agent using Gradio.
+Web UI Application for Assignment Deadline Tracker Agent using Gradio 6.x.
 Provides a modern visual interface with chat, execution trace logging,
 and live Google Calendar device sync buttons.
 """
@@ -33,13 +33,11 @@ def process_agent_chat(user_message, chat_history):
     final_ans = res["final_answer"]
     trace_log = res["trace_log"]
 
-    # Append to Gradio chat history
+    # Append to Gradio chat history tuple list
     if chat_history is None:
         chat_history = []
     
-    chat_history.append({"role": "user", "content": user_msg})
-    chat_history.append({"role": "assistant", "content": final_ans})
-
+    chat_history.append((user_msg, final_ans))
     memory_table = get_memory_table()
 
     return "", chat_history, trace_log, memory_table
@@ -122,7 +120,7 @@ body {
 }
 """
 
-with gr.Blocks(css=custom_css, title="Assignment Deadline Tracker Agent") as demo:
+with gr.Blocks(title="Assignment Deadline Tracker Agent") as demo:
 
     with gr.Column(elem_classes=["header-box"]):
         gr.Markdown(
@@ -138,9 +136,7 @@ with gr.Blocks(css=custom_css, title="Assignment Deadline Tracker Agent") as dem
             with gr.Row():
                 with gr.Column(scale=3):
                     chatbot = gr.Chatbot(
-                        type="messages",
                         height=420,
-                        avatar_images=None,
                         show_copy_button=True
                     )
                     
